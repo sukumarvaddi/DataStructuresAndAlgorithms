@@ -20,21 +20,18 @@ public class FractionalKnapsack {
         for(int i = (noOfItems-1); i>=0; i--){
         	double weight = weightLookUpByPerUnitValue.get(valueToWeightRatioArray[i]);
         	double value = valueLookUpByWeight.get(weight);
-        	double a = Math.min(weight, capacity);
-        	returnValue+=a*valueToWeightRatioArray[i];
-        	capacity = capacity-a;
+//        	double a = Math.min(weight, capacity);
+//        	returnValue+=a*valueToWeightRatioArray[i];
+//        	capacity = capacity-a;
         	
-//        	if(weight < capacity){
-//        		returnValue +=value;
-//        		capacity = capacity-weight;
-//        	}
-//        	else if(capacity ==0){
-//        		break;
-//        	}
-//        	else {
-//        		returnValue+= capacity*valueToWeightRatioArray[i];
-//        		capacity = 0;
-//        	}
+        	if(weight <= capacity){
+        		returnValue +=(weight * valueToWeightRatioArray[i]);
+        		capacity = capacity-weight;
+        	}
+        	else {
+        		returnValue+= capacity*valueToWeightRatioArray[i];
+        		capacity = 0;
+        	}
         }
         return returnValue;
     }
