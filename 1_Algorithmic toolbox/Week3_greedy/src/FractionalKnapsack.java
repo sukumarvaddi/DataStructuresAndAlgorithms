@@ -22,7 +22,6 @@ public class FractionalKnapsack {
         	double value = valueLookUpByWeight.get(weight);
         	double a = Math.min(weight, capacity);
         	returnValue+=a*valueToWeightRatioArray[i];
-        	weight = weight - a;
         	capacity = capacity-a;
         	
 //        	if(weight < capacity){
