@@ -12,15 +12,9 @@ public class CoveringSegments {
 		while (index < segments.length) {
 			minRightMostPoint = segments[index];
 			points.add(minRightMostPoint.end);
-			while (i < segments.length) {
-				Segment nextRightMostPoint = segments[i];
-				if (nextRightMostPoint.start <= minRightMostPoint.end) {
-					i = i + 1;
-					index = i;
-					
-				} else {
-					break;
-				}
+			while (i < segments.length && segments[i].start <= minRightMostPoint.end) {
+				i = i + 1;
+				index = i;
 			}
 
 		}
