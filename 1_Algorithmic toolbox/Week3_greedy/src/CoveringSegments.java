@@ -7,28 +7,24 @@ public class CoveringSegments {
 		Arrays.sort(segments);
 		List<Integer> points = new ArrayList<>();
 		int index = 0;
-		int i = index + 1;
-		Segment minRightMostPoint =null;
-		while (index < segments.length-1) {
+		int i = 0;
+		Segment minRightMostPoint = null;
+		while (index < segments.length) {
 			minRightMostPoint = segments[index];
+			points.add(minRightMostPoint.end);
 			while (i < segments.length) {
 				Segment nextRightMostPoint = segments[i];
 				if (nextRightMostPoint.start <= minRightMostPoint.end) {
-					index = i + 1;
-					i = index;
-				} else if (nextRightMostPoint.start > minRightMostPoint.end) {
+					i = i + 1;
 					index = i;
-					i=(index+1);
-					points.add(minRightMostPoint.end);
+					
+				} else {
 					break;
-
 				}
-				;
 			}
 
 		}
-		
-		points.add(minRightMostPoint.end);
+
 		int[] pointsToReturn = new int[points.size()];
 		int j = 0;
 		for (Integer val : points) {
@@ -67,7 +63,7 @@ public class CoveringSegments {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		
+
 		int n = scanner.nextInt();
 		Segment[] segments = new Segment[n];
 		for (int i = 0; i < n; i++) {
